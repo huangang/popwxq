@@ -1,0 +1,94 @@
+body{margin:0; padding:0; font-size:12px;font-family:'微软雅黑';}
+form img{ position:relative; top:7px;}
+ul,li{margin:0; padding:0; list-style-type:none; }
+a{text-decoration:none; font-family:'微软雅黑';}
+a:hover{text-decoration:none; }
+a:visited{color:#000;}
+.pl_0 { padding-left:0!important;}
+
+/*-----登陆页面-------*/
+	#dlym{background:url(/Public/Images/xiexian.png) repeat #000;}
+	.login_tit {background:url(/Public/Images/logo-system.png) no-repeat scroll 0 0; width:293px; height:30px; margin:100px auto 0;}
+	#login{ font-size:14px; margin-top:100px; line-height:50px; background:url(/Public/Images/shadow.png) repeat-x scroll 0 0 #f6f6f6; border-top:solid 1px #ffffff; border-bottom:solid 1px #ffffff;}
+	.login_con { width:280px; margin:0 auto;}
+	.log_inpu { border:solid 1px #eeeded; border-radius:6px; height:24px; width:77%; border-top:2px solid #eeeded; padding-left:5px;}
+	.code_inpu { border:solid 1px #eeeded; border-radius:6px; height:24px; width:57%; border-top:2px solid #eeeded; padding-left:5px;}
+	.login_footer { color:#ffffff; text-align:center; width:100%; margin-top:230px;}
+	.login_footer a { color:#ffffff;}
+	
+/*-----登陆页面-------*/
+
+/*---top----*/
+#header{ width:100%; height:43px;  float:left; background:#1e1e1e;}
+	#info{ background:url(/Public/Images/user02.png) no-repeat scroll 0 50%; padding-left:20px; float:left; position:absolute; top:0; right:10px; height:43px; line-height:43px; font-size:14px;  color:#ffd403;}
+	#info a{font-size:14px; background:url(/Public/Images/tui.png) no-repeat scroll 100% 10%; color:#ffffff; width:70px; height:25px; padding-left:23px; padding-right:29px; padding-bottom:10px; padding-top:3px; }
+	#header .menu_btn { background:url(/Public/Images/menubtn.png) no-repeat scroll 95% 50% #3b3b3b; width:229px; height:42px; float:left; border-bottom:solid 1px #626367;}
+	#header img{margin-top:10px; margin-left:30px; padding-right:20px; float:left;}
+	#header ul{float:left; height:43px; margin-left:15px;}
+	#header ul li{float:left; line-height:43px; width:75px;}
+	#header ul li a{line-height:43px; color:#f4ffff; font-size:13px; }
+	#header ul li a:hover{color:#FFD403;}
+#update	{ background:-moz-linear-gradient(left center , #ECECEE 3%, #FFFFFF 97%, #FFFFFF 100%) repeat scroll 0 0 rgba(0, 0, 0, 0); height:40px; line-height:40px; width:100%; padding-left:23px;}
+#message{ background:url(/Public/Images/laba.png) no-repeat scroll 0 50%; padding:0 20px; color:#545454;}
+#message a {color:#545454;}
+/*---top----*/
+
+/*----main----*/
+#main{width:100%; float:left; height:100%; min-height:700px; background:url(/Public/Images/mainbg.png) repeat-y scroll 0 0 #ffffff; padding-bottom:20px;}
+	#left{width:229px; float:left; background:#3b3b3b;}
+	#left ul{}
+	#left ul li { border-bottom:solid 1px #626262; height:39px;}
+	#left ul a{ font-size:14px; line-height:39px; color:#fffefe; display:block;}
+	#left ul a:hover{color:#fffefe;}
+	#left .menu01 a { background:url(/Public/Images/lnb01_off.png) no-repeat scroll 9px 50%; padding-left:43px;}
+	#left .menu01 a:hover { background:url(/Public/Images/lnb01_on.png) no-repeat scroll 9px 50% #6ea2a0;}
+	#left .menu02 a { background:url(/Public/Images/lnb02_off.png) no-repeat scroll 9px 50%; padding-left:43px;}
+	#left .menu02 a:hover { background:url(/Public/Images/lnb02_on.png) no-repeat scroll 9px 50% #6ea2a0;}
+	#left .menu03 a { background:url(/Public/Images/lnb03_off.png) no-repeat scroll 9px 50%; padding-left:43px;}
+	#left .menu03 a:hover { background:url(/Public/Images/lnb03_on.png) no-repeat scroll 9px 50% #6ea2a0;}
+	#left .menu04 a { background:url(/Public/Images/lnb04_off.png) no-repeat scroll 9px 50%; padding-left:43px;}
+	#left .menu04 a:hover { background:url(/Public/Images/lnb04_on.png) no-repeat scroll 9px 50% #6ea2a0;}
+	#left .menu05 a { background:url(/Public/Images/lnb05_off.png) no-repeat scroll 9px 50%; padding-left:43px;}
+	#left .menu05 a:hover { background:url(/Public/Images/lnb05_on.png) no-repeat scroll 9px 50% #6ea2a0;}
+	#left .menu06 a { background:url(/Public/Images/lnb06_off.png) no-repeat scroll 9px 50%; padding-left:43px;}
+	#left .menu06 a:hover { background:url(/Public/Images/lnb06_on.png) no-repeat scroll 9px 50% #6ea2a0;}
+	#left .menu07 a { background:url(/Public/Images/lnb07_off.png) no-repeat scroll 9px 50%; padding-left:43px;}
+	#left .menu07 a:hover { background:url(/Public/Images/lnb07_on.png) no-repeat scroll 9px 50% #6ea2a0;}
+
+	#right{float:left; background:#ffffff; min-height:700px; width:100%;}
+	#column{width:100%; font-size:14px; line-height:35px; padding-left:23px; padding-top:20px; clear:both;}
+	#column .gzzh { width:100%;}
+	#column .dark_blue td { background:#eff4f8; border-right:solid 3px #ffffff; border-bottom:solid 6px #ffffff; padding-left:12px;}
+	#column .blue td{ background:#f6fbff; border-right:solid 3px #ffffff; border-bottom:solid 6px #ffffff; padding-left:12px;}
+	#column .red { color:#fa0001; width:18px; display:block;}
+	#change li { line-height:35px;}
+	.del { background:#af4454; border-radius:2px; width:50px; height:26px; border:none; color:#ffffff; line-height:26px; cursor:pointer;}
+	.add { background:#6d9500; border-radius:2px; width:50px; height:26px; border:none; color:#ffffff; line-height:26px; cursor:pointer;}
+	.inpu { border:solid 1px #eeeded; border-radius:6px; height:24px; width:30%; border-top:2px solid #eeeded; padding-left:5px;}
+	.sel { border:solid 1px #eeeded; border-radius:6px; padding:3px; width:30%; border-top:2px solid #eeeded;}
+	.submit { background:url(/Public/Images/sent.png) no-repeat scroll 0 50%; border:none; width:105px; height:34px; font-family:"微软雅黑", "宋体"; font-size:15px; color:#ffffff; padding-left:35px; margin-top:15px;}
+	.reset { background:url(/Public/Images/del.png) no-repeat scroll 0 50%; border:none; width:105px; height:34px; font-family:"微软雅黑", "宋体"; font-size:15px; color:#ffffff; padding-left:35px; margin-top:15px;}
+	.area_tit { width:130px; border-right:none!important;}
+	.area {border:solid 1px #eeeded; border-radius:6px; height:100px; width:30%; border-top:2px solid #eeeded; margin:5px 0 5px 0; font-size:12px; line-height:24px; padding-left:5px;}
+	#list{width:100%; font-size:14px; clear:both; margin-left:23px; padding-top:15px;}
+	.smallnav{ line-height:50px; clear:both; padding-left:23px; color:#8ec200; margin-top:20px; min-height:37px;}
+	.smallnav span { background:url(/Public/Images/url_bul.png) no-repeat scroll 0 0; font-size:14px; color:#676767; height:20px; padding-left:38px; padding-bottom:2px; font-weight:bold;}
+	.smallnav a{ font-size:18px; padding:0 15px; background:url(/Public/Images/titbul_off.png) no-repeat scroll 10px 50% #eff4f8; padding-left:10px; height:37px; width:159px; display:block; float:left; line-height:37px; padding-left:25px; margin-right:5px; color:#959a9e;}
+	.smallnav a:hover{ color:#ffffff; background:url(/Public/Images/titbul_on.png) no-repeat scroll 10px 50% #6ea2a0;}
+	.smallnav a.active{ color:#ffffff; background:url(/Public/Images/titbul_on.png) no-repeat scroll 10px 50% #6ea2a0;}
+	#table1{ border-top:#6ea2a0 2px solid; border-right:#F6F6F6 1px solid; min-width:93%;}
+	#table1 td{border-bottom:#dce0e4 1px solid; border-left:#F6F6F6 1px solid; color:#8C8C8C; }
+	#table1 td a { color:#f5696c;}
+	#table1 .list_head td{ color:#5D5D5D; background:#f6fbff; text-align:center;}
+	.fenye td{ color:#5D5D5D!important; background:#f6fbff;}
+	.fenye td a {color:#5D5D5D!important;}
+	.fenye td a:hover { text-decoration:underline;}
+/*----main----*/
+
+/*----bottom----*/
+#bottom{width:100%; height:50px; float:left; background:#fff; color:#c5c5c5; line-height:50px;}
+	#bottom tr td a{color:#c5c5c5; font-size:12px; line-height:18px; padding-left:5px;}
+	.gray { width:229px; background:#3B3B3B; margin-right:17px;}
+/*----bottom----*/
+.imglimit img{ height:100px;}
+

@@ -1,0 +1,54 @@
+<include file="header" /> 
+<body>
+	<include file="top" />
+	<table id="main" cellpadding="0" cellspacing="0" border="0">
+		<tr>
+        <td width="229" valign="top">
+        <include file="left" />
+        </td>
+		<td valign="top" id="right">
+			<div class="gongao">
+            	<include file="update" />
+            </div>
+            <div class="smallnav" >
+				<a class="active" href="__APP__/Wap/prize" target="_blank">活动地址</a>
+			</div>
+			<div id="column">
+				<form name="publicprize" action="" method="post" >
+					<table cellpadding="0" cellspacing="0" border="0" class="gzzh">
+                    <tr class="dark_blue">
+                    <td width="18"></td><td>抽奖标题　　　　：<input class="inpu" name="title" type="text" value="{pop:$draw['title']}" /><br/>
+									    <input name="Id" type="hidden" value="{pop:$draw['Id']}" /></td>
+					</tr>
+                    <tr class="blue">
+                    <td></td><td>抽奖模式　　　　：
+					<if condition="$draw['type'] eq '0' || $draw['type'] eq ''" >
+					<input type="radio" name="type" checked = "checked" value="1" />按微信墙上墙数量来抽奖，每个参与者的中奖率由参与者审核后的上墙信息量来决定<br/>
+					　　　　　　　　：<input type="radio" name="type" value="2" />按参与者来决定，每个参与者中奖率相等<br/>
+					<else/>
+					<input type="radio" name="type" value="1" <if condition="$draw['type'] eq '1' ">checked = "checked" </if>/>按微信墙上墙数量来抽奖，每个参与者的中奖率由参与者审核后的上墙信息量来决定<br/>
+					　　　　　　　　：<input type="radio" name="type" value="2" <if condition="$draw['type'] eq '2' ">checked = "checked" </if>/>按参与者来决定，每个参与者中奖率相等<br/>
+					</if></td>
+					</tr>
+                    <tr class="dark_blue">
+                    <td></td><td>是否开启　　　　：
+					<if condition="$draw['function'] eq '0' || $draw['function'] eq ''" >
+					<input type="radio" name="function" checked = "checked" value="1" />是
+					<input type="radio" name="function" value="2" />否<br/>
+					<else/>
+					<input type="radio" name="function" value="1" <if condition="$draw['function'] eq '1' ">checked = "checked" </if>/>是
+					<input type="radio" name="function" value="2" <if condition="$draw['function'] eq '2' ">checked = "checked" </if>/>否<br/>
+					</if></td>
+                    </tr>
+                    <tr>
+					<td colspan="2"><input class="submit" type="submit" name="submit" value="提交"/>　<input class="reset" type="reset" name="reset" value="重置" /><br/></td>
+					</tr>
+                    </table>
+                </form>	
+			</div>
+		</td>
+		</tr>
+    </table>
+	<include file="bottom" />
+</body>
+</html>

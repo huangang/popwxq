@@ -1,0 +1,155 @@
+<include file="header" /> 
+<script type="text/javascript">
+	function insertRow(){
+		var rowindex = document.all("addordel").length;
+		if(rowindex>=8){
+			alert("一次只能上传8个文件！");
+			return false;
+		}
+		var obj = document.getElementsByName("addordel")[0].cloneNode(true);
+		document.all("change").appendChild(obj);
+		//document.getElementsByName("change").appendChild(obj);
+	}
+	function delRow(){
+		var allrows = document.all("addordel");
+		var rowindex = document.all("addordel").length;
+		if(rowindex>=2){
+	       event.srcElement.parentNode.removeNode(true);   这是在IE下的方式
+	        event.target.parentNode.removeChild(true);
+		document.getElementById("change").removeChild(allrows[allrows.length-1]);
+		}else{
+			alert("警告：最后一个不能删除！！");
+		}
+	}
+	function chkfile(){
+		var obj = document.getElementsByName("upfile[]");
+		num = obj.length;
+		for (i=0;i<num ;i++ )
+		{
+			if(obj[i].value == 0){
+				alert("请添加上传文件！");
+				return false;
+			}
+		}
+	}
+</script>
+<script src="__PUBLIC__/common.js"></script>
+<body>
+	<include file="top" />
+	<table id="main" cellpadding="0" cellspacing="0" border="0">
+		<tr>
+        <td width="229" valign="top">
+        <include file="left" />
+        </td>
+		<td valign="top" id="right">
+			<div class="gongao">
+            	<include file="update" />
+            </div>
+            <div class="smallnav" >
+				<a class="active" href="__APP__/Wap/vote" target="_blank">活动地址</a>
+				<a href="__APP__/Index/votereset">重新投票</a>
+			</div>
+			<div id="column">
+				<form name="publicvote" action="" method="post" >
+					<table cellpadding="0" cellspacing="0" border="0" class="gzzh">
+                    <tr class="dark_blue">
+                    <td width="18"></td><td>投票标题　　　　：<input class="inpu" name="title" type="text" value="{pop:$vote['title']}" /><br/>
+									    <input name="Id" type="hidden" value="{pop:$vote['Id']}" /></td>
+					
+					</tr>
+                    <tr class="blue">
+                    <td></td>
+                    <td>
+
+						<ul id="change">
+						<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" >
+						<if condition="$tp eq '1'">
+						<volist name="projectnum" id="projectnum">
+						<tbody id="div_add_del{pop:$projectnum['order']}" width="900">
+						<tr>
+						<td width="500">
+						
+							投票项目{pop:$num++}：
+							<input class="inpu" type="text" id="project[]" name="project[]" value="{pop:$projectnum['project']}" style="width:200px;"/>
+							票数：<input class="inpu" type="text" id="num[]" name="num[]" value="{pop:$projectnum.num}" style="width:40px;"/>
+							<button class="del"  type="button" <if condition="$projectnum['order'] neq '0'"> onclick="delrow(this, 'div_add_del{pop:$projectnum['order']}');"</if>  >删除</button>&nbsp;
+							<button class="add" id="vtype" onclick="addrow('div_add_del{pop:$projectnum['order']}');" type="button">添加</button>&nbsp;
+							
+						</td>
+						</tr>
+						</tbody>
+						</volist>	
+						<else/>
+						<tbody id="div_add_del" name="div_add_del">
+						<tr>
+						<td>
+							投票项目：<input class="inpu" type="text" id="project[]" name="project[]" value="" style="width:200px;"/>
+							票数：<input class="inpu" type="text" id="num[]" name="num[]" value="" style="width:40px;"/>
+							<button type="button" onclick="delrow(this, 'div_add_del');">删除</button>&nbsp;
+							<button id="vtype" onclick="addrow('div_add_del');" type="button">添加</button>&nbsp;
+							<br/>
+						</td>
+						</tr>
+						</tbody>	
+						</if>
+						
+						<!--<tbody>
+						<tr>
+							<td>
+							<button type="button" id="vtype" onclick="addrow('div_add_del');" class="btnGrayS vm" value="true"><strong>添加选项</strong></button>至少2项,最多15项,已经添加[<span id='aditem'></span>]项
+							</td>
+						</tr>
+						</tbody>
+						-->
+						</table>
+						</ul>
+					
+					</td>
+					</tr>
+                    <tr class="dark_blue">
+                    <td></td><td>是否开启　　　　：
+					<if condition="$vote['function'] eq '0' || $vote['function'] eq ''" >
+					<input type="radio" name="function" checked = "checked" value="1" />是
+					<input type="radio" name="function" value="2" />否<br/>
+					<else/>
+					<input type="radio" name="function" value="1" <if condition="$vote['function'] eq '1' ">checked = "checked" </if>/>是
+					<input type="radio" name="function" value="2" <if condition="$vote['function'] eq '2' ">checked = "checked" </if>/>否<br/>
+					</if>
+					</td>
+                    </tr>
+                    <tr>
+                    <td colspan="2"><input class="submit" type="submit" name="submit" value="提交"/>　<input class="reset" type="reset" name="reset" value="重置" /><br/></td>
+					</tr>
+                    </table>
+                </form>	
+			</div>
+		</td>
+        </tr>
+	</table>
+<script>
+var count = 1;
+function addrow(tbody) {
+var add = false;
+var newnode;
+if($$(tbody).rows.length == 1 && $$(tbody).rows[0].style.display == 'none') {
+$$(tbody).rows[0].style.display = '';
+newnode = $$(tbody).rows[0];
+} else {
+newnode = $$(tbody).rows[0].cloneNode(true);
+add = true;
+}
+if(add) {
+$$(tbody).appendChild(newnode);
+}
+var aditem = document.getElementById('aditem');
+aditem.innerHTML=count;
+if(count==1500){var vtype = document.getElementById('vtype');
+vtype.disabled="disabled";vtype.value="disabled";}count++;
+}
+function delrow(obj, tbody) {
+$$(tbody).removeChild(obj.parentNode.parentNode);
+}
+</script>
+	<include file="bottom" />
+</body>
+</html>

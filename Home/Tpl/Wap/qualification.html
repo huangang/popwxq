@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>POP-微信墙</title>
+        <base href="." />
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="format-detection" content="telephone=no" />
+        <!--<link href="__PUBLIC__/css/iscroll.css" rel="stylesheet" type="text/css" />-->
+        <script type="text/javascript" src="__PUBLIC__/Css/iscroll.js"></script>
+		<link rel="stylesheet" href="__PUBLIC__/Css/plugmenu.css">
+        <style type="text/css">
+		*{ margin:0; padding:0;}
+		#wrapper { background:url(__PUBLIC__/images/liuyan.jpg) no-repeat scroll 20% 30% #eaeaea; height:100%; font-size:18px; text-align:center; line-height:36px; padding-top:30px; font-family:"微软雅黑", "宋体"; color:#727272; padding-bottom:300px; text-shadow:1px 1px 3px #FFFFFF;}
+		#wrapper h3 { color:#60330a; text-shadow:1px 1px 3px #FFFFFF; font-size:28px; margin-bottom:10px; background:url(__PUBLIC__/images/weixin.png) no-repeat scroll 50% 0; padding-top:90px;}
+		#wrapper h4 { color:#8ec200; margin-bottom:20px; border-bottom:solid 1px #8ec200;}
+		#wrapper span { border:dashed 1px #c6b4b4; padding:2px 5px 2px 5px; font-weight:bold; color:#413b3b; margin:0 5px 0 5px; text-shadow:1px 1px 3px #FFFFFF; background:rgba(255, 255, 255, 0.5) !important;}
+        </style>
+    </head>
+<script>
+function chkForm(){
+	  _system._guide();
+}
+</script>
+    <body id="cate1">
+		<div id="wrapper">
+		<if condition="$message eq '1'">
+		<h3>您已成功进入微信墙!</h3>
+        <h4>回复消息即有机会中奖</h4>
+		<else/>
+		<h3>您尚未进入微信墙!</h3>
+        <h4>获取抽奖资格失败!<br/><span>允许</span>该微信公众号获得授权</h4>
+		</if>
+		<!--回复<span>返回</span>或者<span>后退</span>返回主菜单，<br />回复<span>退出</span>即可退出该微信墙模式~!-->
+		点击屏幕左上角<span>返回</span> 发送祝福话语<br/>即可在大屏幕滚动播出
+		</div>
+
+    </body>
+	</html>

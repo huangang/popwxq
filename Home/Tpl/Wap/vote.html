@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>POP-微信墙</title>   
+<load href="__PUBLIC__/Js/jquery.js" />
+<load href="__PUBLIC__/wxq/jquery-1.8.3.min.js" />
+<load href="__PUBLIC__/wxq/vote.css" />
+</head>
+<body>
+<script>
+function viewExplan()
+{
+	$(function(){
+		$.getJSON('__URL__/votedata',function(jdata){
+			if(jdata.status==1){
+				for (var i=0;i<jdata.data.length;i++)
+				{
+				var dataperc = jdata.data[i]['float_tp'];
+				var barperc = Math.round(dataperc*5.56);
+				var length = barperc;
+				var perc = Math.round(parseInt(length)/5.56);
+				var labelpos = (parseInt(length)-2);
+					if(i==0){
+					var str1='<div class="progressbar" data-perc="{pop:$project.float_tp}"><div class="ff" style="color:#00ff00"><h2>'+jdata.data[i]['project']+'</h2></div><div class="gg" style="color:#ef5b9c"><h2>'+jdata.data[i]['num']+'</h2></div><div class="bar color'+jdata.data[i]['color_tp']+'" style="width:'+barperc+'px;"></div><div class="label" style="left:'+labelpos+'px;">'+perc+'%</div></div>';
+					}else{
+					str1=str1+'<div class="progressbar" data-perc="{pop:$project.float_tp}"><div class="ff" style="color:#00ff00"><h2>'+jdata.data[i]['project']+'</h2></div><div class="gg" style="color:#ef5b9c"><h2>'+jdata.data[i]['num']+'</h2></div><div class="bar color'+jdata.data[i]['color_tp']+'" style="width:'+barperc+'px;"></div><div class="label" style="left:'+labelpos+'px;">'+perc+'%</div></div>';
+					}
+				}
+				$('div#did').html(str1);
+			}
+		});
+	});
+}
+window.onload=function()
+{
+	viewExplan();
+	mtime=setInterval(viewExplan,3000);
+}
+</script>
+<div style="width:760px; background:abcdef; text-align:center; margin:0 auto;">
+<h2 style="color:#00ff00">{pop:$vote['title']}</h2>
+</div>
+<div id="did">
+</div>
+<script>
+$(function() {
+	$('.progressbar').each(function(){
+		var t = $(this),
+			dataperc = t.attr('data-perc'),
+			barperc = Math.round(dataperc*5.56);
+		t.find('.bar').animate({width:barperc}, dataperc*25);
+		t.find('.label').append('<div class="perc"></div>');
+		
+		function perc() {
+			var length = t.find('.bar').css('width'),
+				perc = Math.round(parseInt(length)/5.56),
+				labelpos = (parseInt(length)-2);
+			t.find('.label').css('left', labelpos);
+			t.find('.perc').text(perc+'%');
+		}
+		perc();
+		setInterval(perc, 0); 
+	});
+});
+</script>
+</body>
+</html>

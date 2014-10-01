@@ -1,0 +1,77 @@
+<include file="header" /> 
+<load href="__PUBLIC__/Js/allcheck.js" />
+<body>
+	<include file="top" />
+	<table id="main" cellpadding="0" cellspacing="0" border="0">
+		<tr>
+        <td width="229" valign="top">
+        <include file="left" />
+        </td>
+		<td valign="top" id="right">
+			<div class="gongao">
+            	<include file="update" />
+            </div>
+            <div class="smallnav" ><a href="__URL__/wall">微信墙配置</a> <a href="__URL__/participants">参与人员</a> <a class="active" href="__URL__/message" style="color:#ffffff;">查看留言</a></div>
+			<div id="list">
+			<form name="list" method="post" action="__URL__/delb" >
+				<table id="table1" cellspacing="0" cellpadding="5" border="0">
+				  <tr class="list_head">
+					<td width="80" align="center">全选/反选</td>
+					<td width="160">昵称</td>
+					<td width="160">头像</td>
+					<td width="260">留言内容</td>
+					<td width="80" align="center">留言时间</td>
+					<td width="65" align="center">性别</td>
+					<td width="65" align="center">是否审核</td>
+					<td width="120" align="center">操作</td>
+				  </tr>
+				  <volist name="message" id="message">
+				  <tr>
+					<td align="center"><input type="checkbox" name="allsh[]" value="{pop:$message['Id']}"/></td>
+					<td>{pop:$message['nickname']}</td>
+					<td height="113" valign="top">
+					<img src="{pop:$message['img']}" width="100" height="100" style="margin:0; padding:0;"/>
+					</td>
+					<td>{pop:$message['content']}</td>
+					<td align="center">{pop:$message['time']|date='Y-m-d',###}</td>
+					<td align="center">
+						<if condition="$message['sex'] eq '1'">男
+						<elseif condition="$message['sex'] eq 2" />女
+						<else/>无
+						</if>
+					</td>
+					<td align="center">
+						<if condition="$message['examine'] eq '0'">未审核
+						<elseif condition="$message['examine'] eq 1" />已审核
+						<else/>无
+						</if>
+					</td>
+					<td align="center">
+						<a href="__URL__/del?id={pop:$message['Id']}&data=list">删除</a>
+						<if condition="$message['examine'] eq '0'"><a href="__URL__/examine/Id/{pop:$message['Id']}/examine/1">通过审核</a>
+						<else/><a href="__URL__/examine/Id/{pop:$message['Id']}/examine/0">取消审核</a>
+						</if>
+					</td>
+				  </tr>
+				  </volist>
+				  <tr>
+					<td colspan="7">　　
+					<input type="checkbox" name="chkAll" id="chkAll" title="全选" onClick="ChkAllClick('allsh[]','chkAll')"  />全选
+					<input type="checkbox" name="chkOpposite" id="chkOpposite" title="反选" onClick="ChkOppClick('allsh[]')" />反选
+					<input type="submit" name="stop" value="取消审核" style="cursor:pointer;	"/>
+					<input type="submit" name="go" value="通过审核" style="cursor:pointer;	"/>
+					</td>
+					<td align="center"><input type="submit" name="submit" value="批量删除" style="cursor:pointer;	"/></td>
+				  </tr>
+				  <tr class="fenye">
+				  <td colspan="8" align="right">{pop:$page}</td>
+				  </tr>
+				</table>
+			</form>	
+			</div>
+		</td>
+        </tr>	
+	</table>
+	<include file="bottom" />
+</body>
+</html>

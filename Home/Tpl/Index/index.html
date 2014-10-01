@@ -1,0 +1,84 @@
+<include file="header" /> 
+<script src="__PUBLIC__/Js/jquery.js"></script>
+<script>
+$(function(){
+	$('#mySelect').change(function(){ 
+		//alert($(this).children('option:selected').val()); 
+		var selectvalue=$(this).children('option:selected').val();
+		if(selectvalue==1){
+		var str='<table cellspacing="0" cellpadding="0" border="0"  width="100%"><tr class="blue"><td width="18"></td><td>用户名　　　　 　：<input class="inpu" name="username" type="text" value="{pop:$public['username']}"/><br/></td></tr><tr class="blue"><td></td><td>密码　　　　 　　：<input class="inpu" name="password" type="text" value="{pop:$public['password']}"/><br/><input class="inpu" name="Id" type="hidden" value="{pop:$public['Id']}" /></td></tr></table>';
+		}
+		if(selectvalue==2){
+		var str='<table cellspacing="0" cellpadding="0" border="0" width="100%"><tr class="blue"><td width="18"></td><td>AppId　　　　 　：<input class="inpu" name="appid" type="text" value="{pop:$public['appid']}"/><br/></td></tr><tr class="dark_blue"><td></td><td>AppSecret　　 　：<input class="inpu" name="appsecret" type="text" value="{pop:$public['appsecret']}"/><br/><input class="inpu" name="Id" type="hidden" value="{pop:$public['Id']}" /></td></tr></table>';
+		}
+		$('#did').html(str);
+	}) 
+}) 
+</script>
+<body>
+	<include file="top" />
+	<table border="0" cellpadding="0" cellspacing="0" id="main">
+		<tr>
+        <td valign="top" width="229">
+        <include file="left" />
+        </td>
+		<td valign="top" id="right">
+			<include file="update" />
+            <if condition="$token neq '' ">
+			<div class="smallnav" >
+				<span>URL : </span>{pop:$url}<br/>
+				<span>TOKEN : </span>{pop:$token}
+			</div>
+			</if>
+			<div id="column">
+				<form name="paccout" action="" method="post" >
+					<table cellpadding="0" cellspacing="0" border="0" class="gzzh">
+                    	<tr class="dark_blue">
+                    	<td width="18"><span class="red">*</span></td>
+                    	<td>公共账号名称　　：<input class="inpu" name="pnum" type="text" value="{pop:$public['pnum']}" /><br/></td>
+						</tr>
+                    	<tr class="blue">
+                    	<td><span class="red">*</span></td>
+                        <td>公共账号原始ID　：<input class="inpu" name="original" type="text" value="{pop:$public['original']}"  />
+                         <!--填写后不可修改！！--><br/>
+						<!--*微信号　　　　　：<input name="signal" type="text" value="{pop:$public['signal']}"/><br/>--></td>
+                    	</tr>
+                    	<tr class="dark_blue">
+                    	<td><span class="red">*</span></td>
+                        <td>是否拥有微信高级接口　　：<select class="sel" name="type" id="mySelect">                                       
+										<empty name="$public['type']" >
+										<option value="1" <if condition="$public['type'] eq '1' ">selected = "selected" </if> >没有高级接口</option>
+										<option value="2"  <if condition="$public['type'] eq 2 ">selected = "selected" </if> >有高级接口</option>
+										<else/>
+											<option value="1">没有高级接口</option>
+											<option value="2">有高级接口</option>
+										</empty>
+										</select><br/>
+						</td>
+                    	</tr class="dark_blue">
+						<tr>
+						<td colspan="2">
+						<div id="did">
+							<if condition="$public['type'] eq '1' ">
+							<table cellspacing="0" cellpadding="0" border="0"  width="100%"><tr class="blue"><td width="18"><span class="red">*</span></td><td>用户名　　　　 　：<input class="inpu" name="username" type="text" value="{pop:$public['username']}"/><br/></td></tr>
+							<tr class="blue"><td><span class="red">*</span></td><td>密码　　　　 　　：<input class="inpu" name="password" type="text" value="{pop:$public['password']}"/><br/><input class="inpu" name="Id" type="hidden" value="{pop:$public['Id']}" /></td></tr></table>
+							</if>
+							<if condition="$public['type'] eq '2' ">
+							<table cellspacing="0" cellpadding="0" border="0" width="100%"><tr class="blue"><td width="18"><span class="red">*</span></td><td>AppId　　　　 　：<input class="inpu" name="appid" type="text" value="{pop:$public['appid']}"/><br/></td></tr><tr class="dark_blue"><td><span class="red">*</span></td><td>AppSecret　　 　：<input class="inpu" name="appsecret" type="text" value="{pop:$public['appsecret']}"/><br/><input class="inpu" name="Id" type="hidden" value="{pop:$public['Id']}" /></td></tr></table>
+							</if>
+						</div>	
+						<td>
+						</tr>
+                    	<tr>
+                        <td colspan="2"><input class="submit" type="submit" name="submit" value="提交"/>　<input class="reset" type="reset" name="reset" value="重置" /><br/></td>
+                    	</tr>
+					</table>
+                </form>	
+			</div>
+			
+		</td>
+		</tr>
+    </table>
+	<include file="bottom" />
+</body>
+</html>
