@@ -4,3 +4,5 @@
 ###数据库前缀一般不能修改，若要修改，可以自行配置下
 ###安装完成即刻访问设置微信墙
 ###现在有的功能：微信墙，抽奖，投票
+###微信墙是根据[thinkphp](https://github.com/liu21st/thinkphp)框架写的且用到到了[wechat-php-sdk](https://github.com/dodgepudding/wechat-php-sdk)
+###本地调试可以到ThinkPHP文件目录下ThinkPHP.php的defined('APP_DEBUG') or define('APP_DEBUG',false);中把false改成true开启
