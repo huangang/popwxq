@@ -1017,7 +1017,7 @@ class WeixinAction extends Action
 						return array(
 							array(
 								array(
-									'您好,欢迎使用杭师外院社联微信墙',//标题
+									'您好,欢迎使用微信墙',//标题
 									'',//描述
 									'',//图片
 									'',//链接
