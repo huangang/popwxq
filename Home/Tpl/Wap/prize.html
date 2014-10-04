@@ -44,8 +44,9 @@ $(function(){
                   var avatar = "<img src='"+json[num].img+"' width='100' height='100'/><p>";
                   var content = json[num].content;
                   $("#roll").html(avatar+v+":"+content);
+                  $("#avatar").html(avatar);
                   $("#name").html(v);
-                    $("#mid").val(id); 
+                  $("#mid").val(id); 
 				},1);
 				stop_btn.show();
 				start_btn.hide();
@@ -61,9 +62,9 @@ $(function(){
 		var mid = $("#mid").val();
 		$.post("__URL__/prizedata/action/ok",{id:mid},function(msg){
 			if(msg==1){
-				var mobile = $("#name").html();
-              
-              $("#result").append(mobile+"、");
+				var mobile = $("#name").html();//名字
+                var avatar = $("#avatar").html();//头像
+              $("#result").append(avatar+mobile+"<br/><br/>");
 			}
 			stop_btn.hide();
 			start_btn.show();
@@ -85,7 +86,7 @@ $(function(){
 <div id="main">
   <h2 class="top_title"><a href="" target="_blank"><if condition="$draw['title'] eq ''">微信墙滚动抽奖<else/>{pop:$draw.title}</if></a>(<a href="__URL__/prizereset"><font color="#ffffff">重置抽奖</font></a>)(<a href="#" id="xyjx"><font color="#ffffff">下一奖项</font></a>)</h2>
   <div class="demo">
-    <div id="roll"></div><div style="display:none;" id="name"></div><input type="hidden" id="mid" value="">
+    <div id="roll"></div><div style="display:none;" id="name"></div><div style="display:none;" id="avatar"></div><input type="hidden" id="mid" value="">
     <p style="margin-top:100px; text-align:center;"><input type="button" class="btn" id="start" value="开始"> <input type="button" class="btn" id="stop" value="停止"></p>
     <div id="result"><P style="color:red;font-weight:blod;">中奖名单</P><br/></div>
   </div>
