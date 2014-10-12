@@ -7,7 +7,7 @@
 	define('APP_DEBUG',true);
 	//4.应用核心文件
 	require './ThinkPHP/ThinkPHP.php';
-    //5.安装程序
+	//5.安装程序
 	if (! is_file ( 'install/lock' )) {
 	header ( 'Location: ./install' );
 	exit ();
