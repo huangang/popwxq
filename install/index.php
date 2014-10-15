@@ -100,7 +100,7 @@ $lang = array(
 'dbuser' => '数据库用户名',
 'dbpw' => '数据库密码',
 'dbname' => '数据库名',
-'tablepre' => '此处不可修改',
+'tablepre' => '数据库表前缀',
 'dbport' =>'数据库端口',
 'tips_admininfo' => '网站信息',
 'username' => '管理员账号',
@@ -330,7 +330,7 @@ if($method == 'show_license') {//声明
             $password = md5($password);
 			$db->query("INSERT INTO `{$tablepre}admin` (`Id`, `Username`, `Password`) VALUES('1', '".$username."', '".$password."')");
 			//新增一个标识文件，用来屏蔽重新安装
-			$fp = @fopen(ROOT_PATH.'install/lock','wb+');
+			$fp = @fopen(ROOT_PATH.'install/install.lock','wb+');
 			@fclose($fp);
 		}else{
 			echo '</div><div class="shuibian"><div class="main"><div class="licenseblock">'.$confstatus['msg']."</div>";
