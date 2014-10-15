@@ -185,9 +185,9 @@ $step = intval(getgpc('step', 'R')) ? intval(getgpc('step', 'R')) : 0;
 $method = isset($allow_method[$step]) ? $allow_method[$step] : '';
 
 //检测标识文件是否存在，如果存在，那么停止安装
-if (file_exists('lock')){
+if (file_exists('install.lock')){
 	@header("Content-type: text/html; charset=UTF-8");
-	echo "系统已经安装过了，如果要重新安装，那么请删除install目录下的lock文件";
+	echo "系统已经安装过了，如果要重新安装，那么请删除install目录下的install.lock文件";
 	exit;
 }
 
@@ -899,7 +899,8 @@ function runquery($sql) {
 	global $lang, $tablepre, $db;
 
 	if(!isset($sql) || empty($sql)) return;
-	$sql = str_replace("\r", "\n", str_replace('zd_', $tablepre, $sql));
+	//替换表前缀
+	$sql = str_replace("\r", "\n", str_replace('pop_', $tablepre, $sql));
 	$ret = array();
 	$num = 0;
 	foreach(explode(";\n", trim($sql)) as $query) {
