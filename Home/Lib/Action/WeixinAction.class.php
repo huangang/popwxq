@@ -45,7 +45,7 @@ class WeixinAction extends Action
 			$statedata['state']="0";
 			$state->add($statedata);
             return array(
-				'欢迎关注，回复"微信墙"参加上墙互动Y(^_^)Y',
+				'你好，欢迎关注，回复"微信墙"参加上墙互动Y(^_^)Y',
 				'text'
 			);
         } elseif ('unsubscribe' == $data['Event']) {

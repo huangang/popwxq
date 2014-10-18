@@ -1,8 +1,8 @@
 <?php
 /**
  *网站路由配置
- *@package YiCms
- *@author YiCms
+ *@package gang
+ *@author gang
  **/
 return array(	
 	/*路由设置*/
