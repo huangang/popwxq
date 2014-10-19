@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50154
 File Encoding         : 65001
 
-Date: 2014-02-21 13:52:34
+Date: 2014-10-19 13:52:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -196,3 +196,17 @@ CREATE TABLE `pop_wall` (
 -- ----------------------------
 -- Records of pop_wall
 -- ----------------------------
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `popwxq_tulingapi`
+--
+
+CREATE TABLE `pop_tulingapi` (
+  `Id` int(5) NOT NULL AUTO_INCREMENT,
+  `tulingapi` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+--
+-- Records of pop_tulingapi
+--

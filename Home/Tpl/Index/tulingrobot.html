@@ -1,0 +1,30 @@
+<include file="header" /> 
+<body>
+	<include file="top" />
+	<table id="main" cellpadding="0" cellspacing="0" border="0">
+		<td valign="top" width="229">
+        <include file="left" />
+        </td>
+		<td valign="top" id="right">
+			<include file="update" />
+            <div id="column">
+				<form name="paccout" action="" method="post" >
+					<table cellpadding="0" cellspacing="0" border="0" class="gzzh">
+                    <tr class="dark_blue">
+                    <td width="18"></td><td>点击申请图灵机器人API：<a href="http://www.tuling123.com/openapi/record.do?channel=9800" target="_blank">图灵APIkey</a><br/></td>
+					</tr>
+                    <tr class="blue">
+                    <td width="18"></td><td>图灵API：<input class="inpu" name="tulingapi" type="text" size="22" value="{pop:$tulingapi['tulingapi']}"/><br/></td>
+					</tr>
+                    <tr>
+                    <td colspan="2"><input class="submit" type="submit" name="submit" value="提交"/>　<input class="reset" type="reset" name="reset" value="重置" /><br/></td>
+                    </tr>
+                    </table>
+                </form>	
+			</div>
+		</td>
+        </tr>
+	</table>
+	<include file="bottom" />
+</body>
+</html>

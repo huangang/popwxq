@@ -334,6 +334,7 @@ class WeixinAction extends Action
 				}	
 			}else{
 				switch ($key) {
+					//服务认证号自定义回复
 					case '1':
 						$statethree=M('state');
 						$statewhere['fromusername']=$this->data['FromUserName'];
@@ -491,22 +492,45 @@ class WeixinAction extends Action
 						);
 						break;*/
 					default:
-					    $statesecond=M('state');
-						$statewhere['fromusername']=$this->data['FromUserName'];
-						$usernamenow=$statesecond->where($statewhere)->find();
-						if(count($usernamenow)>0){
-							$statedata['state']="0";
-							$statesecond->where($statewhere)->save($statedata);
-						}else{
-							$statedata['fromusername']=$this->data['FromUserName'];
-							$statedata['state']="0";
-							$statesecond->add($statedata);
-						}
-						
-						return array(
-							'您的信息已收到^_^',
-							'text'
-						);
+				        $tulingapi=M('tulingapi')->find();
+				        $tuling_key=$tulingapi['tulingapi'];
+				        $api_url = "http://www.tuling123.com/openapi/api?key=" . $tuling_key . "&info=" . $key;
+				        $result = file_get_contents ( $api_url );
+				        $result = json_decode ( $result, true );
+				        if ($result ['code'] == 100000) {
+	                        $statesecond=M('state');
+							$statewhere['fromusername']=$this->data['FromUserName'];
+							$usernamenow=$statesecond->where($statewhere)->find();
+							if(count($usernamenow)>0){
+								$statedata['state']="0";
+								$statesecond->where($statewhere)->save($statedata);
+							}else{
+								$statedata['fromusername']=$this->data['FromUserName'];
+								$statedata['state']="0";
+								$statesecond->add($statedata);
+							}
+                            return array(
+                            $result ['text'],
+                            'text'
+                           );
+				        }
+				       else{
+				         	$statesecond=M('state');
+							$statewhere['fromusername']=$this->data['FromUserName'];
+							$usernamenow=$statesecond->where($statewhere)->find();
+							if(count($usernamenow)>0){
+								$statedata['state']="0";
+								$statesecond->where($statewhere)->save($statedata);
+							}else{
+								$statedata['fromusername']=$this->data['FromUserName'];
+								$statedata['state']="0";
+								$statesecond->add($statedata);
+							}
+                            return array(
+                            '你说的我听不懂$_$',
+                            'text'
+                           );
+				       }
 				}
 			}
 		}else{
@@ -938,6 +962,7 @@ class WeixinAction extends Action
 				}	
 			}else{
 				switch ($key) {
+					//订阅号自定义回复
 					case '1':
 						$state=M('state');
 						$statewhere['fromusername']=$this->data['FromUserName'];
@@ -1039,21 +1064,44 @@ class WeixinAction extends Action
 						);
 						break;
 					default:
-						$statesecond=M('state');
-						$statewhere['fromusername']=$this->data['FromUserName'];
-						$usernamenow=$statesecond->where($statewhere)->find();
-						if(count($usernamenow)>0){
-							$statedata['state']="0";
-							$statesecond->where($statewhere)->save($statedata);
-						}else{
-							$statedata['fromusername']=$this->data['FromUserName'];
-							$statedata['state']="0";
-							$statesecond->add($statedata);
-						}
-						return array(
-							'您的信息我们已收到*_*',
-							'text'
-						);
+						$tulingapi=M('tulingapi')->find();
+					        $tuling_key=$tulingapi['tulingapi'];
+					        $api_url = "http://www.tuling123.com/openapi/api?key=" . $tuling_key . "&info=" . $key;
+					        $result = file_get_contents ( $api_url );
+					        $result = json_decode ( $result, true );
+					        if ($result ['code'] == 100000) {
+		                        $statesecond=M('state');
+								$statewhere['fromusername']=$this->data['FromUserName'];
+								$usernamenow=$statesecond->where($statewhere)->find();
+								if(count($usernamenow)>0){
+									$statedata['state']="0";
+									$statesecond->where($statewhere)->save($statedata);
+								}else{
+									$statedata['fromusername']=$this->data['FromUserName'];
+									$statedata['state']="0";
+									$statesecond->add($statedata);
+								}
+	                            return array(
+	                            $result ['text'],
+	                            'text'
+	                           );
+					        }
+					       else{
+					         	$statesecond=M('state');
+								$statewhere['fromusername']=$this->data['FromUserName'];
+								$usernamenow=$statesecond->where($statewhere)->find();
+								if(count($usernamenow)>0){
+									$statedata['state']="0";
+									$statesecond->where($statewhere)->save($statedata);
+								}else{
+									$statedata['fromusername']=$this->data['FromUserName'];
+									$statedata['state']="0";
+									$statesecond->add($statedata);
+								}
+	                            return array(
+	                            '你说的我听不懂$_$',
+	                            'text'
+	                           );
 				}
 			}
 			////////////////////////////////////plan///////////////////////////////////////////////

@@ -352,11 +352,39 @@ class IndexAction extends CommonAction {
 			$this->error('操作失败！');
 		}
 	}
-	public function shake(){
-		$this->display();
-	}
-	public function ceremony(){
-		$this->display();
+	//_____图灵机器人____
+	public function tulingrobot(){
+		$tulingapi=M('tulingapi')->find();
+		if(IS_POST){
+			if($tulingapi==false){				
+				$info=D('tulingapi');
+				if($info->create()){
+					$infonum=$info->add();
+					if($infonum){
+						$this->success('操作成功！');
+					}else{
+						$this->error('操作失败！');
+					}
+				}else{
+					$this->error($info->getError());
+				}
+			}else{
+				$info=D('tulingapi');
+				if($info->create()){
+					$infonum=$info->save();
+					if($infonum){
+						$this->success('操作成功！');
+					}else{
+						$this->error('操作失败！');
+					}
+				}else{
+					$this->error($info->getError());
+				}
+			}
+		}else{
+			$this->assign('tulingapi',$tulingapi);
+			$this->display();
+		}
 	}
 	
 }
