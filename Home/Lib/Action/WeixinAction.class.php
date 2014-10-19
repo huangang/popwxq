@@ -411,9 +411,8 @@ class WeixinAction extends Action
 						}
 						
 						return array(
-							array(
 							'成功退出微信墙',
-							'news'
+							'text'
 						);
 						break;
 					case '微信墙':
@@ -1058,9 +1057,8 @@ class WeixinAction extends Action
 						}
 						
 						return array(
-							array(
 							'成功退出微信墙',
-							'news'
+							'text'
 						);
 						break;
 					case '微信墙':
