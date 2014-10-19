@@ -370,8 +370,10 @@ class IndexAction extends CommonAction {
 				}
 			}else{
 				$info=D('tulingapi');
+                $result = $info->where('Id < 99999')->delete();
+				$info=D('tulingapi');
 				if($info->create()){
-					$infonum=$info->save();
+					$infonum=$info->add();
 					if($infonum){
 						$this->success('操作成功！');
 					}else{

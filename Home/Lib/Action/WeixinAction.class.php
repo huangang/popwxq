@@ -510,7 +510,7 @@ class WeixinAction extends Action
 						break;*/
 					default:
 				        $tulingapi=M('tulingapi')->find();
-				        $tuling_key=$tulingapi['tulingapi'];
+				        $tuling_key=$tulingapi['apikey'];
 				        $api_url = "http://www.tuling123.com/openapi/api?key=" . $tuling_key . "&info=" . $key;
 				        $result = file_get_contents ( $api_url );
 				        $result = json_decode ( $result, true );
@@ -1099,7 +1099,7 @@ class WeixinAction extends Action
 						break;
 					default:
 						$tulingapi=M('tulingapi')->find();
-					        $tuling_key=$tulingapi['tulingapi'];
+					        $tuling_key=$tulingapi['apikey'];
 					        $api_url = "http://www.tuling123.com/openapi/api?key=" . $tuling_key . "&info=" . $key;
 					        $result = file_get_contents ( $api_url );
 					        $result = json_decode ( $result, true );

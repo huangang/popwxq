@@ -201,10 +201,10 @@ CREATE TABLE `pop_wall` (
 --
 -- Table structure for table `popwxq_tulingapi`
 --
-
+DROP TABLE IF EXISTS `pop_tulingapi`;
 CREATE TABLE `pop_tulingapi` (
   `Id` int(5) NOT NULL AUTO_INCREMENT,
-  `tulingapi` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `apikey` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 --
