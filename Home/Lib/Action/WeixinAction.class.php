@@ -396,9 +396,27 @@ class WeixinAction extends Action
 							);
 						}
 						break;
-					case '微信墙':
 					case '返回':
 					case '后退':
+					$statesecond=M('state');
+						$statewhere['fromusername']=$this->data['FromUserName'];
+						$usernamenow=$statesecond->where($statewhere)->find();
+						if(count($usernamenow)>0){
+							$statedata['state']="0";
+							$statesecond->where($statewhere)->save($statedata);
+						}else{
+							$statedata['fromusername']=$this->data['FromUserName'];
+							$statedata['state']="0";
+							$statesecond->add($statedata);
+						}
+						
+						return array(
+							array(
+							'成功退出微信墙',
+							'news'
+						);
+						break;
+					case '微信墙':
 					case 'wall':
 						$statesecond=M('state');
 						$statewhere['fromusername']=$this->data['FromUserName'];
@@ -1027,6 +1045,24 @@ class WeixinAction extends Action
 						break;
 					case '返回':
 					case '后退':
+					$statesecond=M('state');
+						$statewhere['fromusername']=$this->data['FromUserName'];
+						$usernamenow=$statesecond->where($statewhere)->find();
+						if(count($usernamenow)>0){
+							$statedata['state']="0";
+							$statesecond->where($statewhere)->save($statedata);
+						}else{
+							$statedata['fromusername']=$this->data['FromUserName'];
+							$statedata['state']="0";
+							$statesecond->add($statedata);
+						}
+						
+						return array(
+							array(
+							'成功退出微信墙',
+							'news'
+						);
+						break;
 					case '微信墙':
 					$statesecond=M('state');
 						$statewhere['fromusername']=$this->data['FromUserName'];
