@@ -530,8 +530,565 @@ class WeixinAction extends Action
                             $result ['text'],
                             'text'
                            );
-				        }
-				       else{
+				        }else if($result ['code'] == 200000) {
+	                        $statesecond=M('state');
+							$statewhere['fromusername']=$this->data['FromUserName'];
+							$usernamenow=$statesecond->where($statewhere)->find();
+							if(count($usernamenow)>0){
+								$statedata['state']="0";
+								$statesecond->where($statewhere)->save($statedata);
+							}else{
+								$statedata['fromusername']=$this->data['FromUserName'];
+								$statedata['state']="0";
+								$statesecond->add($statedata);
+							}
+							$text = $result ['text'] . ',<a href="' . $result ['url'] . '">点击进入</a>';
+                            return array(
+                            $text,
+                            'text'
+                           );
+				        }else if($result ['code'] == 302000){
+                            $statesecond=M('state');
+							$statewhere['fromusername']=$this->data['FromUserName'];
+							$usernamenow=$statesecond->where($statewhere)->find();
+							if(count($usernamenow)>0){
+								$statedata['state']="0";
+								$statesecond->where($statewhere)->save($statedata);
+							}else{
+								$statedata['fromusername']=$this->data['FromUserName'];
+								$statedata['state']="0";
+								$statesecond->add($statedata);
+							}
+						        return array(
+								array(
+									array(
+									$result['list'][0]['article'],
+									$result['list'][0]['source'],
+									$result['list'][0]['icon'],
+									$result['list'][0]['detailurl'] 
+					            ),
+									array(
+									$result['list'][1]['article'],
+									$result['list'][1]['source'],
+									$result['list'][1]['icon'],
+									$result['list'][1]['detailurl'] 
+					            ),
+									array(
+									$result['list'][2]['article'],
+									$result['list'][2]['source'],
+									$result['list'][2]['icon'],
+									$result['list'][2]['detailurl']
+					            ),
+									array(
+									$result['list'][3]['article'],
+									$result['list'][3]['source'],
+									$result['list'][3]['icon'],
+									$result['list'][3]['detailurl']
+					            ),
+									array(
+									$result['list'][4]['article'],
+									$result['list'][4]['source'],
+									$result['list'][4]['icon'],
+									$result['list'][4]['detailurl']
+					            ),
+									array(
+									$result['list'][5]['article'],
+									$result['list'][5]['source'],
+									$result['list'][5]['icon'],
+									$result['list'][5]['detailurl']
+					            ),
+									array(
+									$result['list'][6]['article'],
+									$result['list'][6]['source'],
+									$result['list'][6]['icon'],
+									$result['list'][6]['detailurl']
+					            ),
+									array(
+									$result['list'][7]['article'],
+									$result['list'][7]['source'],
+									$result['list'][7]['icon'],
+									$result['list'][7]['detailurl']
+					            ),
+									array(
+									$result['list'][8]['article'],
+									$result['list'][8]['source'],
+									$result['list'][8]['icon'],
+									$result['list'][8]['detailurl']
+					            ),
+									array(
+									$result['list'][9]['article'],
+									$result['list'][9]['source'],
+									$result['list'][9]['icon'],
+									$result['list'][9]['detailurl']
+					            ),
+									),
+								'news'
+							);
+				        }else if($result ['code'] == 304000 ){
+                            $statesecond=M('state');
+							$statewhere['fromusername']=$this->data['FromUserName'];
+							$usernamenow=$statesecond->where($statewhere)->find();
+							if(count($usernamenow)>0){
+								$statedata['state']="0";
+								$statesecond->where($statewhere)->save($statedata);
+							}else{
+								$statedata['fromusername']=$this->data['FromUserName'];
+								$statedata['state']="0";
+								$statesecond->add($statedata);
+							}
+						        return array(
+								array(
+									array(
+									$result['list'][0]['name'],//title
+									$result['list'][0]['count'],//description
+									$result['list'][0]['icon'],//picurl
+									$result['list'][0]['detailurl'] //url
+					            ),
+									array(
+									$result['list'][1]['name'],
+									$result['list'][1]['count'],
+									$result['list'][1]['icon'],
+									$result['list'][1]['detailurl'] 
+					            ),
+									array(
+									$result['list'][2]['name'],
+									$result['list'][2]['count'],
+									$result['list'][2]['icon'],
+									$result['list'][2]['detailurl']
+					            ),
+									array(
+									$result['list'][3]['name'],
+									$result['list'][3]['count'],
+									$result['list'][3]['icon'],
+									$result['list'][3]['detailurl']
+					            ),
+									array(
+									$result['list'][4]['name'],
+									$result['list'][4]['count'],
+									$result['list'][4]['icon'],
+									$result['list'][4]['detailurl']
+					            ),
+									array(
+									$result['list'][5]['name'],
+									$result['list'][5]['count'],
+									$result['list'][5]['icon'],
+									$result['list'][5]['detailurl']
+					            ),
+									array(
+									$result['list'][6]['name'],
+									$result['list'][6]['count'],
+									$result['list'][6]['icon'],
+									$result['list'][6]['detailurl']
+					            ),
+									array(
+									$result['list'][7]['name'],
+									$result['list'][7]['count'],
+									$result['list'][7]['icon'],
+									$result['list'][7]['detailurl']
+					            ),
+									array(
+									$result['list'][8]['name'],
+									$result['list'][8]['count'],
+									$result['list'][8]['icon'],
+									$result['list'][8]['detailurl']
+					            ),
+									array(
+									$result['list'][9]['name'],
+									$result['list'][9]['count'],
+									$result['list'][9]['icon'],
+									$result['list'][9]['detailurl']
+					            ),
+									),
+								'news'
+							);
+				        }else if($result ['code'] == 305000 ){
+                            $statesecond=M('state');
+							$statewhere['fromusername']=$this->data['FromUserName'];
+							$usernamenow=$statesecond->where($statewhere)->find();
+							if(count($usernamenow)>0){
+								$statedata['state']="0";
+								$statesecond->where($statewhere)->save($statedata);
+							}else{
+								$statedata['fromusername']=$this->data['FromUserName'];
+								$statedata['state']="0";
+								$statesecond->add($statedata);
+							}
+							
+						        return  array(
+						        	array(
+									   array(
+										 $result ['list'][0]['start'] . '--' .  $result ['list'][0]['terminal'],
+								         $result ['list'][0]['starttime'] . '--' . $result['list'][0]['endtime'],
+								         $result ['list'][0]['icon'],
+								         $result ['list'][0]['detailurl'] 
+					                     ),
+									   array(
+										 $result ['list'][1]['start'] . '--' .  $result ['list'][1]['terminal'],
+								         $result ['list'][1]['starttime'] . '--' . $result['list'][1]['endtime'],
+								         $result ['list'][1]['icon'],
+								         $result ['list'][1]['detailurl'] 
+					                     ),
+									   array(
+										 $result ['list'][2]['start'] . '--' .  $result ['list'][2]['terminal'],
+								         $result ['list'][2]['starttime'] . '--' . $result['list'][2]['endtime'],
+								         $result ['list'][2]['icon'],
+								         $result ['list'][2]['detailurl'] 
+					                     ),
+									   array(
+										 $result ['list'][3]['start'] . '--' .  $result ['list'][3]['terminal'],
+								         $result ['list'][3]['starttime'] . '--' . $result['list'][3]['endtime'],
+								         $result ['list'][3]['icon'],
+								         $result ['list'][3]['detailurl'] 
+					                     ),
+									   array(
+										 $result ['list'][4]['start'] . '--' .  $result ['list'][4]['terminal'],
+								         $result ['list'][4]['starttime'] . '--' . $result['list'][4]['endtime'],
+								         $result ['list'][4]['icon'],
+								         $result ['list'][4]['detailurl'] 
+					                     ),
+									   array(
+										 $result ['list'][5]['start'] . '--' .  $result ['list'][5]['terminal'],
+								         $result ['list'][5]['starttime'] . '--' . $result['list'][5]['endtime'],
+								         $result ['list'][5]['icon'],
+								         $result ['list'][5]['detailurl'] 
+					                     ),
+									    array(
+										 $result ['list'][6]['start'] . '--' .  $result ['list'][6]['terminal'],
+								         $result ['list'][6]['starttime'] . '--' . $result['list'][6]['endtime'],
+								         $result ['list'][6]['icon'],
+								         $result ['list'][6]['detailurl'] 
+					                     ),
+									    array(
+										 $result ['list'][7]['start'] . '--' .  $result ['list'][7]['terminal'],
+								         $result ['list'][7]['starttime'] . '--' . $result['list'][7]['endtime'],
+								         $result ['list'][7]['icon'],
+								         $result ['list'][7]['detailurl'] 
+					                     ),
+									    array(
+										 $result ['list'][8]['start'] . '--' .  $result ['list'][8]['terminal'],
+								         $result ['list'][8]['starttime'] . '--' . $result['list'][8]['endtime'],
+								         $result ['list'][8]['icon'],
+								         $result ['list'][8]['detailurl'] 
+					                     ),
+									    array(
+										 $result ['list'][9]['start'] . '--' .  $result ['list'][9]['terminal'],
+								         $result ['list'][9]['starttime'] . '--' . $result['list'][9]['endtime'],
+								         $result ['list'][9]['icon'],
+								         $result ['list'][9]['detailurl'] 
+					                     ),
+									   ),
+						        	'news'
+						        	);	
+				        }else if($result ['code'] == 306000 ){
+                            $statesecond=M('state');
+							$statewhere['fromusername']=$this->data['FromUserName'];
+							$usernamenow=$statesecond->where($statewhere)->find();
+							if(count($usernamenow)>0){
+								$statedata['state']="0";
+								$statesecond->where($statewhere)->save($statedata);
+							}else{
+								$statedata['fromusername']=$this->data['FromUserName'];
+								$statedata['state']="0";
+								$statesecond->add($statedata);
+							}
+							
+						        return  array(
+						        	array(
+									   array(
+										 $result ['list'][0]['flight'] . '--' . $result ['list'][0]['route'],
+								         $result ['list'][0]['starttime'] . '--' . $result ['list'][0]['endtime'],
+								         $result ['list'][0]['icon'],
+								         $result ['list'][0]['detailurl'] 
+					                     ),
+									   array(
+										 $result ['list'][1]['flight'] . '--' . $result ['list'][1]['route'],
+								         $result ['list'][1]['starttime'] . '--' . $result ['list'][1]['endtime'],
+								         $result ['list'][1]['icon'],
+								         $result ['list'][1]['detailurl'] 
+					                     ),
+									   array(
+										 $result ['list'][2]['flight'] . '--' . $result ['list'][2]['route'],
+								         $result ['list'][2]['starttime'] . '--' . $result ['list'][2]['endtime'],
+								         $result ['list'][2]['icon'],
+								         $result ['list'][2]['detailurl'] 
+					                     ),
+									   array(
+										 $result ['list'][3]['flight'] . '--' .  $result ['list'][3]['route'],
+								         $result ['list'][3]['starttime'] . '--' .  $result ['list'][3]['endtime'],
+								         $result ['list'][3]['icon'],
+								         $result ['list'][3]['detailurl'] 
+					                     ),
+									   array(
+										 $result ['list'][4]['flight'] . '--' . $result ['list'][4]['route'],
+								         $result ['list'][4]['starttime'] . '--' . $result ['list'][4]['endtime'],
+								         $result ['list'][4]['icon'],
+								         $result ['list'][4]['detailurl'] 
+					                     ),
+									   array(
+										 $result ['list'][5]['flight'] . '--' . $result ['list'][5]['route'],
+								         $result ['list'][5]['starttime'] . '--' . $result ['list'][5]['endtime'],
+								         $result ['list'][5]['icon'],
+								         $result ['list'][5]['detailurl'] 
+					                     ),
+									    array(
+										 $result ['list'][6]['flight'] . '--' .  $result ['list'][6]['route'],
+								         $result ['list'][6]['starttime'] . '--' .  $result ['list'][6]['endtime'],
+								         $result ['list'][6]['icon'],
+								         $result ['list'][6]['detailurl'] 
+					                     ),
+									    array(
+										 $result ['list'][7]['flight'] . '--' . $result ['list'][7]['route'],
+								         $result ['list'][7]['starttime'] . '--' . $result ['list'][7]['endtime'],
+								         $result ['list'][7]['icon'],
+								         $result ['list'][7]['detailurl'] 
+					                     ),
+									    array(
+										 $result ['list'][8]['flight'] . '--' . $result ['list'][8]['route'],
+								         $result ['list'][8]['starttime'] . '--' . $result ['list'][8]['endtime'],
+								         $result ['list'][8]['icon'],
+								         $result ['list'][8]['detailurl'] 
+					                     ),
+									    array(
+										 $result ['list'][9]['flight'] . '--' . $result ['list'][9]['route'],
+								         $result ['list'][9]['starttime'] . '--' . $result ['list'][9]['endtime'],
+								         $result ['list'][9]['icon'],
+								         $result ['list'][9]['detailurl'] 
+					                     ),
+									   ),
+						        	'news'
+						        	);	
+				        }else if($result ['code'] == 308000 ){
+                            $statesecond=M('state');
+							$statewhere['fromusername']=$this->data['FromUserName'];
+							$usernamenow=$statesecond->where($statewhere)->find();
+							if(info($usernamenow)>0){
+								$statedata['state']="0";
+								$statesecond->where($statewhere)->save($statedata);
+							}else{
+								$statedata['fromusername']=$this->data['FromUserName'];
+								$statedata['state']="0";
+								$statesecond->add($statedata);
+							}
+						        return array(
+								array(
+									array(
+									$result['list'][0]['name'],//title
+									$result['list'][0]['info'],//description
+									$result['list'][0]['icon'],//picurl
+									$result['list'][0]['detailurl'] //url
+					            ),
+									array(
+									$result['list'][1]['name'],
+									$result['list'][1]['info'],
+									$result['list'][1]['icon'],
+									$result['list'][1]['detailurl'] 
+					            ),
+									array(
+									$result['list'][2]['name'],
+									$result['list'][2]['info'],
+									$result['list'][2]['icon'],
+									$result['list'][2]['detailurl']
+					            ),
+									array(
+									$result['list'][3]['name'],
+									$result['list'][3]['info'],
+									$result['list'][3]['icon'],
+									$result['list'][3]['detailurl']
+					            ),
+									array(
+									$result['list'][4]['name'],
+									$result['list'][4]['info'],
+									$result['list'][4]['icon'],
+									$result['list'][4]['detailurl']
+					            ),
+									array(
+									$result['list'][5]['name'],
+									$result['list'][5]['info'],
+									$result['list'][5]['icon'],
+									$result['list'][5]['detailurl']
+					            ),
+									array(
+									$result['list'][6]['name'],
+									$result['list'][6]['info'],
+									$result['list'][6]['icon'],
+									$result['list'][6]['detailurl']
+					            ),
+									array(
+									$result['list'][7]['name'],
+									$result['list'][7]['info'],
+									$result['list'][7]['icon'],
+									$result['list'][7]['detailurl']
+					            ),
+									array(
+									$result['list'][8]['name'],
+									$result['list'][8]['info'],
+									$result['list'][8]['icon'],
+									$result['list'][8]['detailurl']
+					            ),
+									array(
+									$result['list'][9]['name'],
+									$result['list'][9]['info'],
+									$result['list'][9]['icon'],
+									$result['list'][9]['detailurl']
+					            ),
+									),
+								'news'
+							);
+				        }else if($result ['code'] == 309000){
+                            $statesecond=M('state');
+							$statewhere['fromusername']=$this->data['FromUserName'];
+							$usernamenow=$statesecond->where($statewhere)->find();
+							if(count($usernamenow)>0){
+								$statedata['state']="0";
+								$statesecond->where($statewhere)->save($statedata);
+							}else{
+								$statedata['fromusername']=$this->data['FromUserName'];
+								$statedata['state']="0";
+								$statesecond->add($statedata);
+							}
+						        return array(
+								array(
+								 array(
+									$result ['list'][0]['name'],
+									'价格 : ' . $result ['list'][0]['price'] . ' 满意度 : ' . $result ['list'][0]['satisfaction'],
+									$result ['list'][0]['icon'],
+									$result ['list'][0]['detailurl'] 
+					            ),
+								 array(
+									$result ['list'][1]['name'],
+									'价格 : ' . $result ['list'][1]['price'] . ' 满意度 : ' . $result ['list'][1]['satisfaction'],
+									$result ['list'][1]['icon'],
+									$result ['list'][1]['detailurl'] 
+					            ),
+								 array(
+									$result ['list'][2]['name'],
+									'价格 : ' . $result ['list'][2]['price'] . ' 满意度 : ' . $result ['list'][2]['satisfaction'],
+									$result ['list'][2]['icon'],
+									$result ['list'][2]['detailurl'] 
+					            ),
+								 array(
+									$result ['list'][3]['name'],
+									'价格 : ' . $result ['list'][3]['price'] . ' 满意度 : ' . $result ['list'][3]['satisfaction'],
+									$result ['list'][3]['icon'],
+									$result ['list'][3]['detailurl'] 
+					            ),
+								 array(
+									$result ['list'][4]['name'],
+									'价格 : ' . $result ['list'][4]['price'] . ' 满意度 : ' . $result ['list'][4]['satisfaction'],
+									$result ['list'][4]['icon'],
+									$result ['list'][4]['detailurl'] 
+					            ),
+								 array(
+									$result ['list'][5]['name'],
+									'价格 : ' . $result ['list'][5]['price'] . ' 满意度 : ' . $result ['list'][5]['satisfaction'],
+									$result ['list'][5]['icon'],
+									$result ['list'][5]['detailurl'] 
+					            ),
+								 array(
+									$result ['list'][6]['name'],
+									'价格 : ' . $result ['list'][6]['price'] . ' 满意度 : ' . $result ['list'][6]['satisfaction'],
+									$result ['list'][6]['icon'],
+									$result ['list'][6]['detailurl'] 
+					            ),
+								 array(
+									$result ['list'][7]['name'],
+									'价格 : ' . $result ['list'][7]['price'] . ' 满意度 : ' . $result ['list'][7]['satisfaction'],
+									$result ['list'][7]['icon'],
+									$result ['list'][7]['detailurl'] 
+					            ),
+								 array(
+									$result ['list'][8]['name'],
+									'价格 : ' . $result ['list'][8]['price'] . ' 满意度 : ' . $result ['list'][8]['satisfaction'],
+									$result ['list'][8]['icon'],
+									$result ['list'][8]['detailurl'] 
+					            ),
+								 array(
+									$result ['list'][9]['name'],
+									'价格 : ' . $result ['list'][9]['price'] . ' 满意度 : ' . $result ['list'][9]['satisfaction'],
+									$result ['list'][9]['icon'],
+									$result ['list'][9]['detailurl'] 
+					            ),
+								 ),
+								'news'
+								);
+				        }else if($result ['code'] == 311000 || $result ['code'] == 312000){
+                            $statesecond=M('state');
+							$statewhere['fromusername']=$this->data['FromUserName'];
+							$usernamenow=$statesecond->where($statewhere)->find();
+							if(count($usernamenow)>0){
+								$statedata['state']="0";
+								$statesecond->where($statewhere)->save($statedata);
+							}else{
+								$statedata['fromusername']=$this->data['FromUserName'];
+								$statedata['state']="0";
+								$statesecond->add($statedata);
+							}
+						        return array(
+								array(
+								 array(
+								   $result ['list'][0]['name'],
+							       '价格 : ' . $result ['list'][0]['price'],
+							       $result ['list'][0]['icon'],
+							       $result ['list'][0]['detailurl'] 
+					            ),
+								 array(
+								   $result ['list'][1]['name'],
+							       '价格 : ' . $result ['list'][1]['price'],
+							       $result ['list'][1]['icon'],
+							       $result ['list'][1]['detailurl'] 
+					            ),
+								 array(
+								   $result ['list'][2]['name'],
+							       '价格 : ' . $result ['list'][2]['price'],
+							       $result ['list'][2]['icon'],
+							       $result ['list'][2]['detailurl'] 
+					            ),
+								 array(
+								   $result ['list'][3]['name'],
+							       '价格 : ' . $result ['list'][3]['price'],
+							       $result ['list'][3]['icon'],
+							       $result ['list'][3]['detailurl'] 
+					            ),
+								 array(
+								   $result ['list'][4]['name'],
+							       '价格 : ' . $result ['list'][4]['price'],
+							       $result ['list'][4]['icon'],
+							       $result ['list'][4]['detailurl'] 
+					            ),
+								 array(
+								   $result ['list'][5]['name'],
+							       '价格 : ' . $result ['list'][5]['price'],
+							       $result ['list'][5]['icon'],
+							       $result ['list'][5]['detailurl'] 
+					            ),
+								 array(
+								   $result ['list'][6]['name'],
+							       '价格 : ' . $result ['list'][6]['price'],
+							       $result ['list'][6]['icon'],
+							       $result ['list'][6]['detailurl'] 
+					            ),
+								 array(
+								   $result ['list'][7]['name'],
+							       '价格 : ' . $result ['list'][7]['price'],
+							       $result ['list'][7]['icon'],
+							       $result ['list'][7]['detailurl'] 
+					            ),
+								 array(
+								   $result ['list'][8]['name'],
+							       '价格 : ' . $result ['list'][8]['price'],
+							       $result ['list'][8]['icon'],
+							       $result ['list'][8]['detailurl'] 
+					            ),
+								 array(
+								   $result ['list'][9]['name'],
+							       '价格 : ' . $result ['list'][9]['price'],
+							       $result ['list'][9]['icon'],
+							       $result ['list'][9]['detailurl'] 
+					            ),
+								 ),
+								'news'
+								);
+				        }else{
 				         	$statesecond=M('state');
 							$statewhere['fromusername']=$this->data['FromUserName'];
 							$usernamenow=$statesecond->where($statewhere)->find();
@@ -1098,45 +1655,602 @@ class WeixinAction extends Action
 						);
 						break;
 					default:
-						$tulingapi=M('tulingapi')->find();
-					        $tuling_key=$tulingapi['apikey'];
-					        $api_url = "http://www.tuling123.com/openapi/api?key=" . $tuling_key . "&info=" . $key;
-					        $result = file_get_contents ( $api_url );
-					        $result = json_decode ( $result, true );
-					        if ($result ['code'] == 100000) {
-		                        $statesecond=M('state');
-								$statewhere['fromusername']=$this->data['FromUserName'];
-								$usernamenow=$statesecond->where($statewhere)->find();
-								if(count($usernamenow)>0){
-									$statedata['state']="0";
-									$statesecond->where($statewhere)->save($statedata);
-								}else{
-									$statedata['fromusername']=$this->data['FromUserName'];
-									$statedata['state']="0";
-									$statesecond->add($statedata);
-								}
-	                            return array(
-	                            $result ['text'],
-	                            'text'
-	                           );
-					        }
-					       else{
-					         	$statesecond=M('state');
-								$statewhere['fromusername']=$this->data['FromUserName'];
-								$usernamenow=$statesecond->where($statewhere)->find();
-								if(count($usernamenow)>0){
-									$statedata['state']="0";
-									$statesecond->where($statewhere)->save($statedata);
-								}else{
-									$statedata['fromusername']=$this->data['FromUserName'];
-									$statedata['state']="0";
-									$statesecond->add($statedata);
-								}
-	                            return array(
-	                            '你说的我听不懂$_$',
-	                            'text'
-	                           );
-	                        }
+				        $tulingapi=M('tulingapi')->find();
+				        $tuling_key=$tulingapi['apikey'];
+				        $api_url = "http://www.tuling123.com/openapi/api?key=" . $tuling_key . "&info=" . $key;
+				        $result = file_get_contents ( $api_url );
+				        $result = json_decode ( $result, true );
+				        if ($result ['code'] == 100000) {
+	                        $statesecond=M('state');
+							$statewhere['fromusername']=$this->data['FromUserName'];
+							$usernamenow=$statesecond->where($statewhere)->find();
+							if(count($usernamenow)>0){
+								$statedata['state']="0";
+								$statesecond->where($statewhere)->save($statedata);
+							}else{
+								$statedata['fromusername']=$this->data['FromUserName'];
+								$statedata['state']="0";
+								$statesecond->add($statedata);
+							}
+                            return array(
+                            $result ['text'],
+                            'text'
+                           );
+				        }else if($result ['code'] == 200000) {
+	                        $statesecond=M('state');
+							$statewhere['fromusername']=$this->data['FromUserName'];
+							$usernamenow=$statesecond->where($statewhere)->find();
+							if(count($usernamenow)>0){
+								$statedata['state']="0";
+								$statesecond->where($statewhere)->save($statedata);
+							}else{
+								$statedata['fromusername']=$this->data['FromUserName'];
+								$statedata['state']="0";
+								$statesecond->add($statedata);
+							}
+							$text = $result ['text'] . ',<a href="' . $result ['url'] . '">点击进入</a>';
+                            return array(
+                            $text,
+                            'text'
+                           );
+				        }else if($result ['code'] == 302000){
+                            $statesecond=M('state');
+							$statewhere['fromusername']=$this->data['FromUserName'];
+							$usernamenow=$statesecond->where($statewhere)->find();
+							if(count($usernamenow)>0){
+								$statedata['state']="0";
+								$statesecond->where($statewhere)->save($statedata);
+							}else{
+								$statedata['fromusername']=$this->data['FromUserName'];
+								$statedata['state']="0";
+								$statesecond->add($statedata);
+							}
+						        return array(
+								array(
+									array(
+									$result['list'][0]['article'],
+									$result['list'][0]['source'],
+									$result['list'][0]['icon'],
+									$result['list'][0]['detailurl'] 
+					            ),
+									array(
+									$result['list'][1]['article'],
+									$result['list'][1]['source'],
+									$result['list'][1]['icon'],
+									$result['list'][1]['detailurl'] 
+					            ),
+									array(
+									$result['list'][2]['article'],
+									$result['list'][2]['source'],
+									$result['list'][2]['icon'],
+									$result['list'][2]['detailurl']
+					            ),
+									array(
+									$result['list'][3]['article'],
+									$result['list'][3]['source'],
+									$result['list'][3]['icon'],
+									$result['list'][3]['detailurl']
+					            ),
+									array(
+									$result['list'][4]['article'],
+									$result['list'][4]['source'],
+									$result['list'][4]['icon'],
+									$result['list'][4]['detailurl']
+					            ),
+									array(
+									$result['list'][5]['article'],
+									$result['list'][5]['source'],
+									$result['list'][5]['icon'],
+									$result['list'][5]['detailurl']
+					            ),
+									array(
+									$result['list'][6]['article'],
+									$result['list'][6]['source'],
+									$result['list'][6]['icon'],
+									$result['list'][6]['detailurl']
+					            ),
+									array(
+									$result['list'][7]['article'],
+									$result['list'][7]['source'],
+									$result['list'][7]['icon'],
+									$result['list'][7]['detailurl']
+					            ),
+									array(
+									$result['list'][8]['article'],
+									$result['list'][8]['source'],
+									$result['list'][8]['icon'],
+									$result['list'][8]['detailurl']
+					            ),
+									array(
+									$result['list'][9]['article'],
+									$result['list'][9]['source'],
+									$result['list'][9]['icon'],
+									$result['list'][9]['detailurl']
+					            ),
+									),
+								'news'
+							);
+				        }else if($result ['code'] == 304000 ){
+                            $statesecond=M('state');
+							$statewhere['fromusername']=$this->data['FromUserName'];
+							$usernamenow=$statesecond->where($statewhere)->find();
+							if(count($usernamenow)>0){
+								$statedata['state']="0";
+								$statesecond->where($statewhere)->save($statedata);
+							}else{
+								$statedata['fromusername']=$this->data['FromUserName'];
+								$statedata['state']="0";
+								$statesecond->add($statedata);
+							}
+						        return array(
+								array(
+									array(
+									$result['list'][0]['name'],//title
+									$result['list'][0]['count'],//description
+									$result['list'][0]['icon'],//picurl
+									$result['list'][0]['detailurl'] //url
+					            ),
+									array(
+									$result['list'][1]['name'],
+									$result['list'][1]['count'],
+									$result['list'][1]['icon'],
+									$result['list'][1]['detailurl'] 
+					            ),
+									array(
+									$result['list'][2]['name'],
+									$result['list'][2]['count'],
+									$result['list'][2]['icon'],
+									$result['list'][2]['detailurl']
+					            ),
+									array(
+									$result['list'][3]['name'],
+									$result['list'][3]['count'],
+									$result['list'][3]['icon'],
+									$result['list'][3]['detailurl']
+					            ),
+									array(
+									$result['list'][4]['name'],
+									$result['list'][4]['count'],
+									$result['list'][4]['icon'],
+									$result['list'][4]['detailurl']
+					            ),
+									array(
+									$result['list'][5]['name'],
+									$result['list'][5]['count'],
+									$result['list'][5]['icon'],
+									$result['list'][5]['detailurl']
+					            ),
+									array(
+									$result['list'][6]['name'],
+									$result['list'][6]['count'],
+									$result['list'][6]['icon'],
+									$result['list'][6]['detailurl']
+					            ),
+									array(
+									$result['list'][7]['name'],
+									$result['list'][7]['count'],
+									$result['list'][7]['icon'],
+									$result['list'][7]['detailurl']
+					            ),
+									array(
+									$result['list'][8]['name'],
+									$result['list'][8]['count'],
+									$result['list'][8]['icon'],
+									$result['list'][8]['detailurl']
+					            ),
+									array(
+									$result['list'][9]['name'],
+									$result['list'][9]['count'],
+									$result['list'][9]['icon'],
+									$result['list'][9]['detailurl']
+					            ),
+									),
+								'news'
+							);
+				        }else if($result ['code'] == 305000 ){
+                            $statesecond=M('state');
+							$statewhere['fromusername']=$this->data['FromUserName'];
+							$usernamenow=$statesecond->where($statewhere)->find();
+							if(count($usernamenow)>0){
+								$statedata['state']="0";
+								$statesecond->where($statewhere)->save($statedata);
+							}else{
+								$statedata['fromusername']=$this->data['FromUserName'];
+								$statedata['state']="0";
+								$statesecond->add($statedata);
+							}
+							
+						        return  array(
+						        	array(
+									   array(
+										 $result ['list'][0]['start'] . '--' .  $result ['list'][0]['terminal'],
+								         $result ['list'][0]['starttime'] . '--' . $result['list'][0]['endtime'],
+								         $result ['list'][0]['icon'],
+								         $result ['list'][0]['detailurl'] 
+					                     ),
+									   array(
+										 $result ['list'][1]['start'] . '--' .  $result ['list'][1]['terminal'],
+								         $result ['list'][1]['starttime'] . '--' . $result['list'][1]['endtime'],
+								         $result ['list'][1]['icon'],
+								         $result ['list'][1]['detailurl'] 
+					                     ),
+									   array(
+										 $result ['list'][2]['start'] . '--' .  $result ['list'][2]['terminal'],
+								         $result ['list'][2]['starttime'] . '--' . $result['list'][2]['endtime'],
+								         $result ['list'][2]['icon'],
+								         $result ['list'][2]['detailurl'] 
+					                     ),
+									   array(
+										 $result ['list'][3]['start'] . '--' .  $result ['list'][3]['terminal'],
+								         $result ['list'][3]['starttime'] . '--' . $result['list'][3]['endtime'],
+								         $result ['list'][3]['icon'],
+								         $result ['list'][3]['detailurl'] 
+					                     ),
+									   array(
+										 $result ['list'][4]['start'] . '--' .  $result ['list'][4]['terminal'],
+								         $result ['list'][4]['starttime'] . '--' . $result['list'][4]['endtime'],
+								         $result ['list'][4]['icon'],
+								         $result ['list'][4]['detailurl'] 
+					                     ),
+									   array(
+										 $result ['list'][5]['start'] . '--' .  $result ['list'][5]['terminal'],
+								         $result ['list'][5]['starttime'] . '--' . $result['list'][5]['endtime'],
+								         $result ['list'][5]['icon'],
+								         $result ['list'][5]['detailurl'] 
+					                     ),
+									    array(
+										 $result ['list'][6]['start'] . '--' .  $result ['list'][6]['terminal'],
+								         $result ['list'][6]['starttime'] . '--' . $result['list'][6]['endtime'],
+								         $result ['list'][6]['icon'],
+								         $result ['list'][6]['detailurl'] 
+					                     ),
+									    array(
+										 $result ['list'][7]['start'] . '--' .  $result ['list'][7]['terminal'],
+								         $result ['list'][7]['starttime'] . '--' . $result['list'][7]['endtime'],
+								         $result ['list'][7]['icon'],
+								         $result ['list'][7]['detailurl'] 
+					                     ),
+									    array(
+										 $result ['list'][8]['start'] . '--' .  $result ['list'][8]['terminal'],
+								         $result ['list'][8]['starttime'] . '--' . $result['list'][8]['endtime'],
+								         $result ['list'][8]['icon'],
+								         $result ['list'][8]['detailurl'] 
+					                     ),
+									    array(
+										 $result ['list'][9]['start'] . '--' .  $result ['list'][9]['terminal'],
+								         $result ['list'][9]['starttime'] . '--' . $result['list'][9]['endtime'],
+								         $result ['list'][9]['icon'],
+								         $result ['list'][9]['detailurl'] 
+					                     ),
+									   ),
+						        	'news'
+						        	);	
+				        }else if($result ['code'] == 306000 ){
+                            $statesecond=M('state');
+							$statewhere['fromusername']=$this->data['FromUserName'];
+							$usernamenow=$statesecond->where($statewhere)->find();
+							if(count($usernamenow)>0){
+								$statedata['state']="0";
+								$statesecond->where($statewhere)->save($statedata);
+							}else{
+								$statedata['fromusername']=$this->data['FromUserName'];
+								$statedata['state']="0";
+								$statesecond->add($statedata);
+							}
+							
+						        return  array(
+						        	array(
+									   array(
+										 $result ['list'][0]['flight'] . '--' . $result ['list'][0]['route'],
+								         $result ['list'][0]['starttime'] . '--' . $result ['list'][0]['endtime'],
+								         $result ['list'][0]['icon'],
+								         $result ['list'][0]['detailurl'] 
+					                     ),
+									   array(
+										 $result ['list'][1]['flight'] . '--' . $result ['list'][1]['route'],
+								         $result ['list'][1]['starttime'] . '--' . $result ['list'][1]['endtime'],
+								         $result ['list'][1]['icon'],
+								         $result ['list'][1]['detailurl'] 
+					                     ),
+									   array(
+										 $result ['list'][2]['flight'] . '--' . $result ['list'][2]['route'],
+								         $result ['list'][2]['starttime'] . '--' . $result ['list'][2]['endtime'],
+								         $result ['list'][2]['icon'],
+								         $result ['list'][2]['detailurl'] 
+					                     ),
+									   array(
+										 $result ['list'][3]['flight'] . '--' .  $result ['list'][3]['route'],
+								         $result ['list'][3]['starttime'] . '--' .  $result ['list'][3]['endtime'],
+								         $result ['list'][3]['icon'],
+								         $result ['list'][3]['detailurl'] 
+					                     ),
+									   array(
+										 $result ['list'][4]['flight'] . '--' . $result ['list'][4]['route'],
+								         $result ['list'][4]['starttime'] . '--' . $result ['list'][4]['endtime'],
+								         $result ['list'][4]['icon'],
+								         $result ['list'][4]['detailurl'] 
+					                     ),
+									   array(
+										 $result ['list'][5]['flight'] . '--' . $result ['list'][5]['route'],
+								         $result ['list'][5]['starttime'] . '--' . $result ['list'][5]['endtime'],
+								         $result ['list'][5]['icon'],
+								         $result ['list'][5]['detailurl'] 
+					                     ),
+									    array(
+										 $result ['list'][6]['flight'] . '--' .  $result ['list'][6]['route'],
+								         $result ['list'][6]['starttime'] . '--' .  $result ['list'][6]['endtime'],
+								         $result ['list'][6]['icon'],
+								         $result ['list'][6]['detailurl'] 
+					                     ),
+									    array(
+										 $result ['list'][7]['flight'] . '--' . $result ['list'][7]['route'],
+								         $result ['list'][7]['starttime'] . '--' . $result ['list'][7]['endtime'],
+								         $result ['list'][7]['icon'],
+								         $result ['list'][7]['detailurl'] 
+					                     ),
+									    array(
+										 $result ['list'][8]['flight'] . '--' . $result ['list'][8]['route'],
+								         $result ['list'][8]['starttime'] . '--' . $result ['list'][8]['endtime'],
+								         $result ['list'][8]['icon'],
+								         $result ['list'][8]['detailurl'] 
+					                     ),
+									    array(
+										 $result ['list'][9]['flight'] . '--' . $result ['list'][9]['route'],
+								         $result ['list'][9]['starttime'] . '--' . $result ['list'][9]['endtime'],
+								         $result ['list'][9]['icon'],
+								         $result ['list'][9]['detailurl'] 
+					                     ),
+									   ),
+						        	'news'
+						        	);	
+				        }else if($result ['code'] == 308000 ){
+                            $statesecond=M('state');
+							$statewhere['fromusername']=$this->data['FromUserName'];
+							$usernamenow=$statesecond->where($statewhere)->find();
+							if(info($usernamenow)>0){
+								$statedata['state']="0";
+								$statesecond->where($statewhere)->save($statedata);
+							}else{
+								$statedata['fromusername']=$this->data['FromUserName'];
+								$statedata['state']="0";
+								$statesecond->add($statedata);
+							}
+						        return array(
+								array(
+									array(
+									$result['list'][0]['name'],//title
+									$result['list'][0]['info'],//description
+									$result['list'][0]['icon'],//picurl
+									$result['list'][0]['detailurl'] //url
+					            ),
+									array(
+									$result['list'][1]['name'],
+									$result['list'][1]['info'],
+									$result['list'][1]['icon'],
+									$result['list'][1]['detailurl'] 
+					            ),
+									array(
+									$result['list'][2]['name'],
+									$result['list'][2]['info'],
+									$result['list'][2]['icon'],
+									$result['list'][2]['detailurl']
+					            ),
+									array(
+									$result['list'][3]['name'],
+									$result['list'][3]['info'],
+									$result['list'][3]['icon'],
+									$result['list'][3]['detailurl']
+					            ),
+									array(
+									$result['list'][4]['name'],
+									$result['list'][4]['info'],
+									$result['list'][4]['icon'],
+									$result['list'][4]['detailurl']
+					            ),
+									array(
+									$result['list'][5]['name'],
+									$result['list'][5]['info'],
+									$result['list'][5]['icon'],
+									$result['list'][5]['detailurl']
+					            ),
+									array(
+									$result['list'][6]['name'],
+									$result['list'][6]['info'],
+									$result['list'][6]['icon'],
+									$result['list'][6]['detailurl']
+					            ),
+									array(
+									$result['list'][7]['name'],
+									$result['list'][7]['info'],
+									$result['list'][7]['icon'],
+									$result['list'][7]['detailurl']
+					            ),
+									array(
+									$result['list'][8]['name'],
+									$result['list'][8]['info'],
+									$result['list'][8]['icon'],
+									$result['list'][8]['detailurl']
+					            ),
+									array(
+									$result['list'][9]['name'],
+									$result['list'][9]['info'],
+									$result['list'][9]['icon'],
+									$result['list'][9]['detailurl']
+					            ),
+									),
+								'news'
+							);
+				        }else if($result ['code'] == 309000){
+                            $statesecond=M('state');
+							$statewhere['fromusername']=$this->data['FromUserName'];
+							$usernamenow=$statesecond->where($statewhere)->find();
+							if(count($usernamenow)>0){
+								$statedata['state']="0";
+								$statesecond->where($statewhere)->save($statedata);
+							}else{
+								$statedata['fromusername']=$this->data['FromUserName'];
+								$statedata['state']="0";
+								$statesecond->add($statedata);
+							}
+						        return array(
+								array(
+								 array(
+									$result ['list'][0]['name'],
+									'价格 : ' . $result ['list'][0]['price'] . ' 满意度 : ' . $result ['list'][0]['satisfaction'],
+									$result ['list'][0]['icon'],
+									$result ['list'][0]['detailurl'] 
+					            ),
+								 array(
+									$result ['list'][1]['name'],
+									'价格 : ' . $result ['list'][1]['price'] . ' 满意度 : ' . $result ['list'][1]['satisfaction'],
+									$result ['list'][1]['icon'],
+									$result ['list'][1]['detailurl'] 
+					            ),
+								 array(
+									$result ['list'][2]['name'],
+									'价格 : ' . $result ['list'][2]['price'] . ' 满意度 : ' . $result ['list'][2]['satisfaction'],
+									$result ['list'][2]['icon'],
+									$result ['list'][2]['detailurl'] 
+					            ),
+								 array(
+									$result ['list'][3]['name'],
+									'价格 : ' . $result ['list'][3]['price'] . ' 满意度 : ' . $result ['list'][3]['satisfaction'],
+									$result ['list'][3]['icon'],
+									$result ['list'][3]['detailurl'] 
+					            ),
+								 array(
+									$result ['list'][4]['name'],
+									'价格 : ' . $result ['list'][4]['price'] . ' 满意度 : ' . $result ['list'][4]['satisfaction'],
+									$result ['list'][4]['icon'],
+									$result ['list'][4]['detailurl'] 
+					            ),
+								 array(
+									$result ['list'][5]['name'],
+									'价格 : ' . $result ['list'][5]['price'] . ' 满意度 : ' . $result ['list'][5]['satisfaction'],
+									$result ['list'][5]['icon'],
+									$result ['list'][5]['detailurl'] 
+					            ),
+								 array(
+									$result ['list'][6]['name'],
+									'价格 : ' . $result ['list'][6]['price'] . ' 满意度 : ' . $result ['list'][6]['satisfaction'],
+									$result ['list'][6]['icon'],
+									$result ['list'][6]['detailurl'] 
+					            ),
+								 array(
+									$result ['list'][7]['name'],
+									'价格 : ' . $result ['list'][7]['price'] . ' 满意度 : ' . $result ['list'][7]['satisfaction'],
+									$result ['list'][7]['icon'],
+									$result ['list'][7]['detailurl'] 
+					            ),
+								 array(
+									$result ['list'][8]['name'],
+									'价格 : ' . $result ['list'][8]['price'] . ' 满意度 : ' . $result ['list'][8]['satisfaction'],
+									$result ['list'][8]['icon'],
+									$result ['list'][8]['detailurl'] 
+					            ),
+								 array(
+									$result ['list'][9]['name'],
+									'价格 : ' . $result ['list'][9]['price'] . ' 满意度 : ' . $result ['list'][9]['satisfaction'],
+									$result ['list'][9]['icon'],
+									$result ['list'][9]['detailurl'] 
+					            ),
+								 ),
+								'news'
+								);
+				        }else if($result ['code'] == 311000 || $result ['code'] == 312000){
+                            $statesecond=M('state');
+							$statewhere['fromusername']=$this->data['FromUserName'];
+							$usernamenow=$statesecond->where($statewhere)->find();
+							if(count($usernamenow)>0){
+								$statedata['state']="0";
+								$statesecond->where($statewhere)->save($statedata);
+							}else{
+								$statedata['fromusername']=$this->data['FromUserName'];
+								$statedata['state']="0";
+								$statesecond->add($statedata);
+							}
+						        return array(
+								array(
+								 array(
+								   $result ['list'][0]['name'],
+							       '价格 : ' . $result ['list'][0]['price'],
+							       $result ['list'][0]['icon'],
+							       $result ['list'][0]['detailurl'] 
+					            ),
+								 array(
+								   $result ['list'][1]['name'],
+							       '价格 : ' . $result ['list'][1]['price'],
+							       $result ['list'][1]['icon'],
+							       $result ['list'][1]['detailurl'] 
+					            ),
+								 array(
+								   $result ['list'][2]['name'],
+							       '价格 : ' . $result ['list'][2]['price'],
+							       $result ['list'][2]['icon'],
+							       $result ['list'][2]['detailurl'] 
+					            ),
+								 array(
+								   $result ['list'][3]['name'],
+							       '价格 : ' . $result ['list'][3]['price'],
+							       $result ['list'][3]['icon'],
+							       $result ['list'][3]['detailurl'] 
+					            ),
+								 array(
+								   $result ['list'][4]['name'],
+							       '价格 : ' . $result ['list'][4]['price'],
+							       $result ['list'][4]['icon'],
+							       $result ['list'][4]['detailurl'] 
+					            ),
+								 array(
+								   $result ['list'][5]['name'],
+							       '价格 : ' . $result ['list'][5]['price'],
+							       $result ['list'][5]['icon'],
+							       $result ['list'][5]['detailurl'] 
+					            ),
+								 array(
+								   $result ['list'][6]['name'],
+							       '价格 : ' . $result ['list'][6]['price'],
+							       $result ['list'][6]['icon'],
+							       $result ['list'][6]['detailurl'] 
+					            ),
+								 array(
+								   $result ['list'][7]['name'],
+							       '价格 : ' . $result ['list'][7]['price'],
+							       $result ['list'][7]['icon'],
+							       $result ['list'][7]['detailurl'] 
+					            ),
+								 array(
+								   $result ['list'][8]['name'],
+							       '价格 : ' . $result ['list'][8]['price'],
+							       $result ['list'][8]['icon'],
+							       $result ['list'][8]['detailurl'] 
+					            ),
+								 array(
+								   $result ['list'][9]['name'],
+							       '价格 : ' . $result ['list'][9]['price'],
+							       $result ['list'][9]['icon'],
+							       $result ['list'][9]['detailurl'] 
+					            ),
+								 ),
+								'news'
+								);
+				        }else{
+				         	$statesecond=M('state');
+							$statewhere['fromusername']=$this->data['FromUserName'];
+							$usernamenow=$statesecond->where($statewhere)->find();
+							if(count($usernamenow)>0){
+								$statedata['state']="0";
+								$statesecond->where($statewhere)->save($statedata);
+							}else{
+								$statedata['fromusername']=$this->data['FromUserName'];
+								$statedata['state']="0";
+								$statesecond->add($statedata);
+							}
+                            return array(
+                            '你说的我听不懂$_$',
+                            'text'
+                           );
+				       }
 				}
 			}
 			////////////////////////////////////plan///////////////////////////////////////////////
