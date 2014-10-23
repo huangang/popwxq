@@ -8,7 +8,7 @@
 	//4.应用核心文件
 	require './ThinkPHP/ThinkPHP.php';
 	//5.安装程序
-	if (! is_file ( 'install/install.lock' )) {
+	if (! is_file ( 'Home/install.lock' )) {
 	header ( 'Location: ./install' );
 	exit ();
     }

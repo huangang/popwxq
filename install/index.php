@@ -6,7 +6,7 @@ error_reporting(0);
 include('config.ini.php');
 
 //参数设置
-define('SOFT_VERSION', '1.0版');
+define('SOFT_VERSION', '1.5版');
 define('SOFT_RELEASE', $version);
 define('ROOT_PATH', dirname(__FILE__).'/../');//网站根目录
 define('SOFT_NAME', '微信墙'.SOFT_VERSION);
@@ -14,21 +14,16 @@ define('DBCHARSET','UTF8');//编码 分为 UTF8 GBK
 //----------------------语言包
 $lang = array(
 'license'=>'<div class="license"><h1>系统安装协议</h1>
-                <p>版权所有 (c)2014-2015 保留所有权利。 </p>
-				<p>感谢您选择POPteam微信公共平台基于 PHP + MySQL   的技术开发，全部源码开放。</p>
-				<p>为了使你正确并合法的使用本软件，请你在使用前务必阅读清楚下面的协议条款：</p>
-			<strong>一、本授权协议适用且仅适用于 1.0 版本，官方对本授权协议的最终解释权。</strong>
-			    <p></p>
-			<strong>二、协议许可的权利 </strong>
-				<p>1、您可以在完全遵守本最终用户授权协议的基础上，将本软件应用于非商业用途，而不必支付软件版权授权费用。 </p>
-				<p>2、您可以在协议规定的约束和限制范围内修改POPteam微信公共平台源代码或界面风格以适应您的网站要求。 </p>
+				<p>欢迎使用POP微信墙，本程序基于 PHP + MySQL   的技术开发，全部源码开放。</p>
+				<p>1、您可以将本软件应用于非商业或者非商业用途，而不必支付软件版权授权费用。 </p>
+				<p>2、您可以在协议规定的约束和限制范围内修改POP微信墙源代码或界面风格以适应您的网站要求。 </p>
 				<p>3、您拥有使用本软件构建的网站全部内容所有权，并独立承担与这些内容的相关法律义务。 </p>
-				<p><b>版本最新更新：</b> 2014年10月4日</p>
-                <p align=right>BY:POPteam微信公共平台</p>
+				<p><b>版本最新更新：</b> 2014年10月23日</p>
+                <p align=right>BY:POP微信墙</p>
 </div>',
 'agreement_yes' => '我同意，继续安装',
 'agreement_no' => '我不同意',
-'title_install' => ' POPteam微信墙 F'.SOFT_VERSION.' 安装程序',
+'title_install' => ' POP微信墙 '.SOFT_VERSION.' 安装程序',
 'error_quit_msg' => '您必须解决以上问题，安装才可以继续',
 'click_to_back' => '点击返回上一步',
 
@@ -185,9 +180,9 @@ $step = intval(getgpc('step', 'R')) ? intval(getgpc('step', 'R')) : 0;
 $method = isset($allow_method[$step]) ? $allow_method[$step] : '';
 
 //检测标识文件是否存在，如果存在，那么停止安装
-if (file_exists('install.lock')){
+if (file_exists('../Home/install.lock')){
 	@header("Content-type: text/html; charset=UTF-8");
-	echo "系统已经安装过了，如果要重新安装，那么请删除install目录下的install.lock文件";
+	echo "系统已经安装过了，如果要重新安装，那么请删除Home目录下的install.lock文件";
 	exit;
 }
 
@@ -330,7 +325,7 @@ if($method == 'show_license') {//声明
             $password = md5($password);
 			$db->query("INSERT INTO `{$tablepre}admin` (`Id`, `Username`, `Password`) VALUES('1', '".$username."', '".$password."')");
 			//新增一个标识文件，用来屏蔽重新安装
-			$fp = @fopen(ROOT_PATH.'install/install.lock','wb+');
+			$fp = @fopen(ROOT_PATH.'Home/install.lock','wb+');
 			@fclose($fp);
 		}else{
 			echo '</div><div class="shuibian"><div class="main"><div class="licenseblock">'.$confstatus['msg']."</div>";
@@ -343,7 +338,7 @@ if($method == 'show_license') {//声明
 	$dbpw = '数据库密码';
 	$tablepre = 'pop_';
 	$dbport = '3306';
-	$fanli_name = 'POPteam微信公共平台演示站';
+	$fanli_name = 'POP微信墙';
 	show_form($form_db_init_items, $error_msg);
 }
 
@@ -384,7 +379,7 @@ function show_header() {
 <title>$title</title>
 <meta http-equiv="X-UA-Compatible" content="IE=7" />
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-<meta content="POPteam微信墙" name="Copyright" />
+<meta content="POP微信墙" name="Copyright" />
 <script type="text/javascript">
 	function $(id) {
 		return document.getElementById(id);
@@ -409,8 +404,7 @@ function show_footer($quit = true) {
 		</div>
         	</div>
 			<div class="footer">
-			    <p>Powered by POPteam微信墙© F1.0 2014-2015</p>
-				<p>版权所有</p>
+			    <p>Powered by © POP微信墙</p>
 			</div>
            
 		
